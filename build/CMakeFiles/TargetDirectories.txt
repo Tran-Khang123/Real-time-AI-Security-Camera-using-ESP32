@@ -1,0 +1,3 @@
+/home/rtx5070/Desktop/PROJECT_DETECT_MEO_DEPLOY_C++/FULL_PROJECT_GITHUB/build/CMakeFiles/Esp32Monitor.dir
+/home/rtx5070/Desktop/PROJECT_DETECT_MEO_DEPLOY_C++/FULL_PROJECT_GITHUB/build/CMakeFiles/edit_cache.dir
+/home/rtx5070/Desktop/PROJECT_DETECT_MEO_DEPLOY_C++/FULL_PROJECT_GITHUB/build/CMakeFiles/rebuild_cache.dir

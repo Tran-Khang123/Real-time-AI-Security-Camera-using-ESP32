@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Giám Sát Mèo - CAT SECURITY</title>
+    <link rel="stylesheet" href="/static/style.css?v=2">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <h1><i class="fas fa-shield-cat"></i> CAT SECURITY</h1>
+            </div>
+            <div class="header-right">
+                <span class="status-badge" id="connStatus"><i class="fas fa-circle-notch fa-spin"></i> Đang kết nối...</span>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="video-wrapper" id="videoWrapper">
+                    <img src="/video_feed" id="cameraStream" alt="Camera Stream" data-width="1280" data-height="960">
+                    <canvas id="roiCanvas"></canvas>
+                </div>
+                <div class="video-tools">
+                    <button onclick="takeSnapshot()" class="btn-info">
+                        <i class="fas fa-camera"></i> Chụp Ảnh Ngay
+                    </button>
+                    
+                    <button onclick="clearROI()" class="btn-outline">
+                        <i class="fas fa-eraser"></i> Xóa Vùng (ROI)
+                    </button>
+                    <p class="hint">Kéo chuột để vẽ vùng bảo vệ</p>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="control-card">
+                    <h3>Trạng Thái Còi</h3>
+                    <div id="buzzerStatus" class="buzzer-indicator off">Hệ thống an toàn</div>
+                    
+                    <div class="btn-group">
+                        <button onclick="manualControl('on')" class="btn-danger" id="btnOn">
+                            <i class="fas fa-volume-up"></i> BẬT CÒI
+                        </button>
+                        <button onclick="manualControl('off')" class="btn-secondary" id="btnOff">
+                            <i class="fas fa-volume-mute"></i> TẮT CÒI
+                        </button>
+                    </div>
+
+                    <div style="margin-top: 15px; border-top: 1px solid #333; padding-top: 10px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                            <span style="font-weight: 600; font-size: 0.9em; color: #ccc;">
+                                <i class="fas fa-robot"></i> Tự Động Hú Còi (AI)
+                            </span>
+                            <label class="switch">
+                                <input type="checkbox" id="aiBuzzerToggle" checked onchange="toggleAIMode()">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div style="font-size: 0.8em; color: #888;" id="aiStatusText">
+                            Khi phát hiện xâm nhập, còi sẽ tự động bật.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history-card">
+                    <div class="card-header">
+                        <h3>Lịch Sử Phát Hiện</h3>
+                        <input type="date" id="historyFilter" class="date-input" placeholder="Chọn ngày">
+                    </div>
+                    <div class="history-list" id="galleryGrid">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+        <a class="next" onclick="changeImage(1)">&#10095;</a>
+    </div>
+
+    <script src="/static/script.js?v=2"></script>
+</body>
+</html>
